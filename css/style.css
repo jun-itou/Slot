@@ -1,0 +1,145 @@
+#main {
+  background-color:#000000; 
+}
+.content {
+  width: 488px;
+  margin: 450px auto;
+  text-align: center;
+}
+
+.slots {
+  width: 156px;
+  height: 224px;
+  border: 2px solid;
+  float: left;
+}
+
+#reelLeft {
+  background-image: url("../img/reel01.png");
+  background-repeat: repeat-y;
+  background-position: 0 1250px;
+}
+
+#reelCenter {
+  background-image: url("../img/reel02.png");
+  background-repeat: repeat-y;
+  background-position: 0 1250px;
+  margin-left: 10px;
+}
+
+#reelRight {
+  background-image: url("../img/reel03.png" );
+  background-repeat: repeat-y;
+  background-position: 0 1250px;
+  margin-left: 10px;
+
+}
+
+.slots .wrapper {
+  width: 152px;
+  height: 166px;
+  margin-top: 27px;
+}
+
+.button_wrap {
+  width: 156px;
+  float: left;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.stop {/*周りの凹み*/
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+    color: rgba(3, 169, 244, 0.54);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    text-align: center;
+    background: #f7f7f7;
+    box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.08);
+}
+
+.stopLeft, .stopCenter, .stopRight {/*ボタン自体*/
+    cursor: pointer;
+    position: absolute;
+    content: '';
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    vertical-align: middle;
+    left: 10px;
+    top: 9px;
+    border-radius: 50%;
+    font-size: 40px;
+    background-image: -webkit-linear-gradient(#e64c2a 0%, #c94325 100%);
+    background-image: linear-gradient(#e64c2a 0%, #c94325 100%);
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.5), 0 2px 2px rgba(0, 0, 0, 0.19);
+    border-bottom: solid 2px #b5b5b5;
+  }
+
+.stopLeft:active, .stopCenter:active, .stopRight:active{
+    background-image: -webkit-linear-gradient(#4f89fa 0%, #4375d6 100%);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 2px 2px rgba(0, 0, 0, 0.19);
+    border-bottom: solid 2px #d8d8d8;
+}
+
+.squareBtn {
+
+	font-weight:bold;
+	text-decoration:none;
+	font-family:Arial;
+	box-shadow:inset #f58b8b 0px 5px 8px -1px,#c9c9c9 1px 3px 2px;
+	o-box-shadow:inset #f58b8b 0px 5px 8px -1px,#c9c9c9 1px 3px 2px;
+	-moz-box-shadow:inset #f58b8b 0px 5px 8px -1px,#c9c9c9 1px 3px 2px;
+	-webkit-box-shadow:inset #f58b8b 0px 5px 8px -1px,#c9c9c9 1px 3px 2px;
+	background:#f5a4a4;
+	background:-o-linear-gradient(90deg, #f5a4a4, #ff2b2b);
+	background:-moz-linear-gradient( center top, #f5a4a4 5%, #ff2b2b 100% );
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f5a4a4), color-stop(1, #ff2b2b) );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f5a4a4', endColorstr='#ff2b2b');
+	background:-webkit-linear-gradient(#f5a4a4, #ff2b2b);
+	background:-ms-linear-gradient(#f5a4a4, #ff2b2b);
+	background:linear-gradient(#f5a4a4, #ff2b2b);
+	text-indent:0px;
+	line-height:44px;
+	-moz-border-radius:30px;
+	-webkit-border-radius:30px;
+	border-radius:30px;
+	text-align:center;
+	vertical-align:middle;
+	display:inline-block;
+	font-size:39px;
+	color:#ffffff;
+	width:220px;
+	height:100px;
+	padding:16px;
+	text-shadow:#7d7d7d 0px 3px 4px;
+	border-color:#ffffff;
+	border-width:3px;
+	border-style:solid;
+  outline: none;
+  margin-top: 25px;
+}
+
+.squareBtn:active {
+	box-shadow:inset #f58b8b 0px 5px 8px -1px,#c9c9c9 1px 0 2px;
+	o-box-shadow:inset #f58b8b 0px 5px 8px -1px,#c9c9c9 1px 0 2px;
+	-moz-box-shadow:inset #f58b8b 0px 5px 8px -1px,#c9c9c9 1px 0 2px;
+	-webkit-box-shadow:inset #f58b8b 0px 5px 8px -1px,#c9c9c9 1px 0 2px;
+	position:relative;
+	top:3px
+}
+
+.squareBtn:hover {
+	background:#ff2b2b;
+	background:-o-linear-gradient(90deg, #ff2b2b, #f5a4a4);
+	background:-moz-linear-gradient( center top, #ff2b2b 5%, #f5a4a4 100% );
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ff2b2b), color-stop(1, #f5a4a4) );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff2b2b', endColorstr='#f5a4a4');
+	background:-webkit-linear-gradient(#ff2b2b, #f5a4a4);
+	background:-ms-linear-gradient(#ff2b2b, #f5a4a4);
+	background:linear-gradient(#ff2b2b, #f5a4a4);
+}
