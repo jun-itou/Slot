@@ -473,8 +473,7 @@ function viewEventBinder() {
     let rightBtn = document.querySelector("#reelRight");
     let lever = document.querySelector("#lever");
     let slot  = new Slot();
-    console.log(slot);
-    // let reelModel = new ReelManagerModel(reelRoles, reelNames);
+    let reelModel = new ReelManagerModel(reelRoles, reelNames);
     
     $(function(){
         $('html').keydown(function(e){
