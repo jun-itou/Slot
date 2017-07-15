@@ -3,34 +3,38 @@
   <head>
     <meta charset="utf-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    
-    <script src="js/reelController.js"></script>
-    <script src="js/main.js"></script>
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <script src="js/reelController.js"></script>
   </head>
-  <body id="main">
+  <body>
     <div class="content">
       <div class="slots" id="reelLeft">
         <div class="wrapper"></div>
       </div>
-
       <div class="slots" id="reelCenter">
         <div class="wrapper"></div>
       </div>
-
       <div class="slots" id="reelRight">
         <div class="wrapper"></div>
       </div>
-      
+      <div class="button_wrap">
+        <div class="stop">
+          <div class="stopLeft"></div>
+        </div>
+      </div>
+      <div class="button_wrap">
+        <div class="stop">
+          <div class="stopCenter"></div>
+        </div>
+      </div>
+      <div class="button_wrap">
+        <div class="stop">
+          <div class="stopRight"></div>
+        </div>
+      </div>
+      <button id="startBtn" class="squareBtn">開始</button>
     </div>
-    <div id="reelLeft"></div>
-<div id="reelCenter"></div>
-<div id="reelRight"></div>
-
-<div id="indexDump">
-
-</div>
+      <script src="js/main.js"></script>
   </body>
 </html>

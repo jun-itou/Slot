@@ -130,6 +130,7 @@
         }
 
         set role(role) {
+          console.log(role);
             this._role = role;
         }
 
@@ -351,13 +352,45 @@
             return true;
         }
     }
-    $(function () {
-        let dumpTag = document.querySelector("#indexDump");
+    (function () {
+        //let dumpTag = document.querySelector("#indexDump");
         function imageUpdate(indies) {
-            dumpTag.textContent=
-                "現在のリールINEDX[LEFT:"+indies[0]+"]"+"[CENTER:"+indies[1]+"]"+"[RIGHT:"+indies[2]+"]";
+            // dumpTag.textContent=
+            //     "現在のリールINEDX[LEFT:"+indies[0]+"]"+"[CENTER:"+indies[1]+"]"+"[RIGHT:"+indies[2]+"]";
+              $(function(){
+              // アニメーションスピード(px/ミリ秒)
+                  var scrollSpeed = 5;
+                  // 画像サイズY軸(px)
+                  var imgHeight = 1302;
+                  // 画像の初期位置Y軸(px)
+                  var leftPosY  = parseInt($('#reelLeft').css('background-position-y'));
+                  var centPosY  = parseInt($('#reelCenter').css('background-position-y'));
+                  var rightPosY = parseInt($('#reelRight').css('background-position-y'));
+               //   console.log(indies);
+                 setTimeout(function(){
+                  // ループ処理
+                 // console.log(centPosY);
+                  //console.log(rightPosY);
+                    let startLeft = setInterval(function() {
+                      // 画像サイズまで移動したら0に戻る
+                          if (leftPosY >= imgHeight) leftPosY = 0;
+                          //scrollSpeed分移動
+                          leftPosY += scrollSpeed;
+                          $('#reelLeft').css("background-position","0 "+leftPosY+"px");
+                      }, 1);
+                    let startCenter = setInterval(function() {
+                          if (centPosY >= imgHeight) centPosY = 0;
+                          centPosY += scrollSpeed;
+                          $('#reelCenter').css("background-position","0 "+centPosY+"px");
+                      }, 1);
+                    let startRight = setInterval(function() {
+                          if (rightPosY >= imgHeight) rightPosY = 0;
+                          rightPosY += scrollSpeed;
+                          $('#reelRight').css("background-position","0 "+rightPosY+"px");
+                      }, 1);
+                  },1500);
+                });
         }
-
         vm();
 
         function vm() {
@@ -369,9 +402,9 @@
              */
             let roleTypes = {
                   NONE: 		{type: 0, maxCheckCount: 1}
-                , REPLAY: 		{type: 1, maxCheckCount: 0}
+                , REPLAY: 	{type: 1, maxCheckCount: 0}
                 , BELL: 		{type: 2, maxCheckCount: 0}
-                , CHERRY: 		{type: 3, maxCheckCount: 0}
+                , CHERRY: 	{type: 3, maxCheckCount: 0}
                 , BAR: 			{type: 4, maxCheckCount: 0}
                 , SEVEN: 		{type: 5, maxCheckCount: 0}
                 , PIRA: 		{type: 6, maxCheckCount: 0}
@@ -380,9 +413,9 @@
              リール名
              */
             let reelNames = {
-                  LEFT: 0
+                  LEFT:   0
                 , CENTER: 1
-                , RIGHT: 2
+                , RIGHT:  2
 
             };
             /**
@@ -460,41 +493,33 @@
             ];
 
             viewEventBinder();
+            
             let reelModel = new ReelManagerModel(reelRoles, reelNames);
             reelModel.obsNext = viewUpdate;
             reelModel.obsStop = viewStart;
             let slot = new Slot(reelModel, roleTypes);
-            slot.start();
-		}         
-    });
-function viewEventBinder() {
-    let leftBtn = document.querySelector("#reelLeft");
-    let centerBtn = document.querySelector("#reelCenter");
-    let rightBtn = document.querySelector("#reelRight");
-    let lever = document.querySelector("#lever");
-    let slot  = new Slot();
-    let reelModel = new ReelManagerModel(reelRoles, reelNames);
-    
-    $(function(){
-        $('html').keydown(function(e){
-            switch(e.keyCode){
-                case 83 : 
-                    addEventListener(slot.leverOn(), false);
-                    console.log("ii");
-                break;
+            slot.start();         
 
-                case 66 :
-                    addEventListener(reelModel.stop(reelNames.LEFT), false);
-                break;
+    function viewEventBinder() {
 
-                case 78 :
-                    addEventListener(reelModel.stop(reelNames.CENTER),false);
-                break;
+      let leftBtn   = document.querySelector(".stopLeft");
+      let centerBtn = document.querySelector(".stopCenter");
+      let rightBtn  = document.querySelector(".stopRight");
+      let startBtn  = document.querySelector("#startBtn");
 
-                case 77 :   
-                    addEventListener(reelModel.stop(reelNames.RIGHT), false);    
-                break;
-            }
-        });
-    });
-}
+      leftBtn.addEventListener("click", function () {
+          reelModel.stop(reelNames.LEFT);
+      }, false);
+      centerBtn.addEventListener("click", function () {
+          reelModel.stop(reelNames.CENTER);
+      }, false);
+      rightBtn.addEventListener("click", function () {
+          reelModel.stop(reelNames.RIGHT);
+      }, false);
+
+      startBtn.addEventListener("click", function () {
+          slot.leverOn();
+      }, false);
+    }
+  }
+}())
